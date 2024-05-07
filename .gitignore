@@ -1,4 +1,4 @@
-htmlparser
+vlbi-automation
 ./obj/*.o
 *.o
 *.txt
