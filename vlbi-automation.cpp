@@ -1,10 +1,8 @@
 /******************************************************************************
  *
- * htmlparser.c; Created by Jon Leithe based on https://www.geeksforgeeks.org/html-parser-in-c-cpp/
+ * vlbi-automation.cpp; Created by Jon Leithe based on https://www.geeksforgeeks.org/html-parser-in-c-cpp/
  * Date: 3/5-2024
  *
- * First I edited this to accept an input file, instead of a buffer
- * 
  * 
 ******************************************************************************/
   
@@ -19,11 +17,14 @@
 
 using namespace std;
 
+
 //
 // Driver code
 //
 int main(int argc, char **argv)
 {
+	string	searchString;
+
 	if(argc < 3){
 		cout << "Specify input and output file!" << endl;
 		cout << "Usage: " << argv[0] << " <input-file.html> <output-file>" << endl;
@@ -32,7 +33,12 @@ int main(int argc, char **argv)
   
 	fileoperations fo(argv[1], argv[2]);
 
-	fo.find(0, "lang=");
+	if(argc == 4)
+		searchString = argv[3];
+	else
+		searchString = "lang=";
+
+	fo.find(0, searchString);
 
     return 0; 
 }
