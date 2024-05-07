@@ -5,11 +5,11 @@
  *      Author: leijon
  */
 
-#include "FileOperations.h"
+#include "../inc/fileoperations.h"
 
 
 
-string FileOperations::readHmtlTag(string _tag)
+string fileoperations::readHmtlTag(string _tag)
 {
 	/*
 	cout << "Inside readHtmlTag" << endl;

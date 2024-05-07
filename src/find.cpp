@@ -13,14 +13,14 @@
 #include <string>
 #include <sstream>
 
-#include "FileOperations.h"
+#include "../inc/fileoperations.h"
 
 
 
 //
 //	find() searches for _searchString, returning the position in the file where the string starts
 //
-unsigned long FileOperations::find(unsigned long _startPosition, string _searchString)
+unsigned long fileoperations::find(unsigned long _startPosition, string _searchString)
 {
 	string			inputString;
 	unsigned long	filePosition = 0L, position = 0L, stringPosition= 0L;

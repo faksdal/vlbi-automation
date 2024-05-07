@@ -5,11 +5,11 @@
  *      Author: leijon
  */
 
-#include "FileOperations.h"
+#include "../inc/fileoperations.h"
 
 
 
-FileOperations::FileOperations(char* _inputFileName, char* _outputFileName)
+fileoperations::fileoperations(char* _inputFileName, char* _outputFileName)
 {
 	inputFile.open(_inputFileName, ios::ate);
 	if(!inputFile.is_open()){
@@ -39,7 +39,7 @@ FileOperations::FileOperations(char* _inputFileName, char* _outputFileName)
 
 
 
-FileOperations::~FileOperations()
+fileoperations::~fileoperations()
 {
 	//
 	// Close files upon exiting

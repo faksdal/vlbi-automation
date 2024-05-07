@@ -16,7 +16,7 @@ using namespace std;
 
 
 
-class FileOperations {
+class fileoperations {
 
 private:
 	unsigned long	inputFileSize = 0L;
@@ -30,8 +30,8 @@ private:
 protected:
 
 public:
-	FileOperations(char* _inputFileName, char* _outputFileName);
-	virtual ~FileOperations();
+	fileoperations(char* _inputFileName, char* _outputFileName);
+	virtual ~fileoperations();
 
 
 	void			readFile(void);

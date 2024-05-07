@@ -14,7 +14,8 @@
 //#include <string.h>
 //#include <stdbool.h>
 
-#include "FileOperations.h"
+
+#include "inc/fileoperations.h"
 
 using namespace std;
 
@@ -29,7 +30,7 @@ int main(int argc, char **argv)
 		exit(-1);
 	} // if(argc < 3)
   
-	FileOperations fo(argv[1], argv[2]);
+	fileoperations fo(argv[1], argv[2]);
 
 	fo.find(0, "lang=");
 

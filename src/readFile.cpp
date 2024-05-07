@@ -5,14 +5,14 @@
  *      Author: leijon
  */
 
-#include "FileOperations.h"
+#include "../inc/fileoperations.h"
 
 
 
 //
 //	readFile() - not quite sure what to do with this, or if I need it at all...
 //
-void FileOperations::readFile(void)
+void fileoperations::readFile(void)
 {
 	/*
 	cout << "Inside readFile" << endl;
