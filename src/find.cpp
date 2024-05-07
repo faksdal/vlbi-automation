@@ -11,7 +11,7 @@
 //
 
 #include <string>
-#include <sstream>
+//include <sstream>
 
 #include "../inc/fileoperations.h"
 
@@ -23,45 +23,57 @@
 unsigned long fileoperations::find(unsigned long _startPosition, string _searchString)
 {
 	string			inputString;
-	unsigned long	filePosition = 0L, position = 0L, stringPosition= 0L;
+	unsigned long	filePosition	= 0L;		// This starts with a 0
+	unsigned long	position		= 0L;
+	unsigned long	stringPosition	= 0L;		// This starts with a 0
 
 
 	if(!inputFile.is_open()){
-		cout << "Error: inputfile not open, exiting" << endl;
+		cout << "Error: inputfile not open, exiting with exit(-1)!" << endl;
 		exit(-1);
 	}
 
 
-	//position = inputFile.tellg();
-	//cout << "Current fp-pos: " << position << endl;
+	//
+	//	As long as we have input from the file, we keep reading
+	//
 	while(getline(inputFile, inputString)){
 		filePosition = inputFile.tellg();
 
+		//cout << inputString << endl << endl;
+		inputString = skipInitialWhitespace(inputString);
+		//cout << inputString << endl << endl;
+
 		//
-		//	If this is true, we've got a match
+		//	If this is true, we've got a match between _searchString and a
+		//	substring in the read line
 		//
 		if((stringPosition = inputString.find(_searchString)) != string::npos){
-			cout << "    Current fp-pos: " << (filePosition) << endl;
-			cout << "Current string-pos: " << (stringPosition) << endl;
-			cout << "              Line: " << inputString << endl;
-			cout << "  Character at pos: " << inputString[stringPosition] << endl;
-			cout << "InputString length: " << inputString.length() << endl;
-			position = filePosition - (inputString.length() - 1) + stringPosition;
+			cout << "    Current filepointer position: " << (filePosition) << endl;
+			cout << "             Line read from file: " << inputString << endl;
+			cout << "       Length of the string read: " << inputString.length() << endl;
+			cout << "Position of searchstring in line: " << (stringPosition) << endl;
 
-			cout << endl << "Position of searchstring inside file: " << position << endl;
+			//
+			//	Calculate file position for the start of the _searchString...
+			//
+			position = filePosition - inputString.length() - 1;
 
-			inputFile.seekg(position-1);
-			char c = inputFile.get();
-			cout << endl << "Character read from position: " << c << endl;
+			//
+			//	Seek to the current file position, read and print the next
+			//	three characters
+			//
 
+			char c;
+			inputFile.seekg(position);
+			cout << endl << "Next thirteen character from file at position " << position << " is: ";
+			for(int i = 0; i < 13; i++){
+				c = inputFile.get();
+				cout << c;
+			}
+
+			cout << endl;
 		}
-		/*
-		std::istringstream iss(line);
-		int a, b;
-		if (!(iss >> a >> b)) { break; } // error
-		*/
-
-		// process pair (a,b)
 	}
 
 	return position;
