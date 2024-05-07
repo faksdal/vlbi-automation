@@ -27,8 +27,7 @@ int main(int argc, char **argv)
 		cout << "Specify input file!" << endl;
 		cout << "Usage: " << argv[0] << " <input-file.html>" << endl;
 		exit(-1);
-	}
-  //  htmlparse parse(argv[1]);
+	} // if(argc < 2)
   
     return 0; 
 }
