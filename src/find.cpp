@@ -40,19 +40,21 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 	while(getline(inputFile, inputString)){
 		filePosition = inputFile.tellg();
 
-		//cout << inputString << endl << endl;
+		//
+		//	Delete any initial whitespace in the string
+		//
 		inputString = skipInitialWhitespace(inputString);
-		//cout << inputString << endl << endl;
+
 
 		//
 		//	If this is true, we've got a match between _searchString and a
 		//	substring in the read line
 		//
 		if((stringPosition = inputString.find(_searchString)) != string::npos){
-			cout << "    Current filepointer position: " << (filePosition) << endl;
-			cout << "             Line read from file: " << inputString << endl;
-			cout << "       Length of the string read: " << inputString.length() << endl;
-			cout << "Position of searchstring in line: " << (stringPosition) << endl;
+			//cout << "    Current filepointer position: " << (filePosition) << endl;
+			//cout << "             Line read from file: " << inputString << endl;
+			//cout << "       Length of the string read: " << inputString.length() << endl;
+			//cout << "Position of searchstring in line: " << (stringPosition) << endl;
 
 			//
 			//	Calculate file position for the start of the _searchString...
@@ -61,9 +63,8 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 
 			//
 			//	Seek to the current file position, read and print the next
-			//	three characters
+			//	thirteen characters... Just to see we know where we're at
 			//
-
 			char c;
 			inputFile.seekg(position);
 			cout << endl << "Next thirteen character from file at position " << position << " is: ";
@@ -75,6 +76,5 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 			cout << endl;
 		}
 	}
-
 	return position;
 }

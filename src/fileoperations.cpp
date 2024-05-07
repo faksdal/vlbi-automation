@@ -9,6 +9,13 @@
 
 
 
+//
+//	The constructor is in charge of opening both input- and output-files,
+//	getting the filesize and position the file pointer at the beginning
+//	of the input file.
+//
+//	It also gives an error if opening the files don't work out
+//
 fileoperations::fileoperations(char* _inputFileName, char* _outputFileName)
 {
 	inputFile.open(_inputFileName, ios::ate);
@@ -32,13 +39,13 @@ fileoperations::fileoperations(char* _inputFileName, char* _outputFileName)
 		cout << "Error opening output file: " << _outputFileName << ". Exiting..." << endl;
 		exit(-1);
 	}
-
-	cout << "Both files: " << _inputFileName << "/" << _outputFileName << " opened successfully!" << endl;
-
 }
 
 
 
+//
+//	The destructor is in charge of closing the files upon exit
+//
 fileoperations::~fileoperations()
 {
 	//

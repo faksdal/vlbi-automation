@@ -23,7 +23,8 @@ using namespace std;
 //
 int main(int argc, char **argv)
 {
-	string	searchString;
+	string			searchString;
+	unsigned long	filePointer = 0L;
 
 	if(argc < 3){
 		cout << "Specify input and output file!" << endl;
@@ -36,9 +37,11 @@ int main(int argc, char **argv)
 	if(argc == 4)
 		searchString = argv[3];
 	else
-		searchString = "lang=";
+		searchString = "<title>";
 
-	fo.find(0, searchString);
+	filePointer = fo.find(0, searchString);
+
+	cout << "File pointer from fo.find(): " << filePointer << endl;
 
     return 0; 
 }
