@@ -10,11 +10,13 @@
 
 
 //
-//	readFile() starts the parsing procedure of the input file
+//	readFile() - not quite sure what to do with this, or if I need it at all...
 //
 void FileOperations::readFile(void)
 {
+	/*
 	cout << "Inside readFile" << endl;
 
 	cout << readHmtlTag("<li>") << endl;
+	*/
 }

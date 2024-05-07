@@ -34,7 +34,8 @@ public:
 	virtual ~FileOperations();
 
 
-	void	readFile(void);
+	void			readFile(void);
+	unsigned long	find(unsigned long _startPosition, string _searchString);
 
 };
 

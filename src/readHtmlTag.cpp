@@ -11,7 +11,9 @@
 
 string FileOperations::readHmtlTag(string _tag)
 {
+	/*
 	cout << "Inside readHtmlTag" << endl;
-
+	*/
 	return("Returned from readHtmlTag!");
+
 }

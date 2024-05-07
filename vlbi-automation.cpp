@@ -31,7 +31,7 @@ int main(int argc, char **argv)
   
 	FileOperations fo(argv[1], argv[2]);
 
-	fo.readFile();
+	fo.find(0, "lang=");
 
     return 0; 
 }
