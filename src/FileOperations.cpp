@@ -5,17 +5,45 @@
  *      Author: leijon
  */
 
-#include "/home/leijon/projects/vlbi-automation/inc/FileOperations.h"
+#include "FileOperations.h"
 
-namespace std {
 
-FileOperations::FileOperations() {
-	// TODO Auto-generated constructor stub
+
+FileOperations::FileOperations(char* _inputFileName, char* _outputFileName)
+{
+	inputFile.open(_inputFileName, ios::ate);
+	if(!inputFile.is_open()){
+		// error opening file
+		cout << "Error opening input file: " << _inputFileName << ". Exiting..." << endl;
+		exit(-1);
+	}
+	else{
+		inputFileSize = inputFile.tellg();
+
+		//
+		// After getting the filesize, set file pointer at beginning of file.
+		//
+		inputFile.seekg(0, inputFile.beg);
+	}
+
+	outputFile.open(_outputFileName);
+	if(!outputFile.is_open()){
+		// error opening file
+		cout << "Error opening output file: " << _outputFileName << ". Exiting..." << endl;
+		exit(-1);
+	}
+
+	cout << "Both files: " << _inputFileName << "/" << _outputFileName << " opened successfully!" << endl;
 
 }
 
-FileOperations::~FileOperations() {
-	// TODO Auto-generated destructor stub
-}
 
-} /* namespace std */
+
+FileOperations::~FileOperations()
+{
+	//
+	// Close files upon exiting
+	//
+	inputFile.close();
+	outputFile.close();
+}

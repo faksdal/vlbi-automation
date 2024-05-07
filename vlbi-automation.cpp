@@ -14,7 +14,7 @@
 //#include <string.h>
 //#include <stdbool.h>
 
-//#include "htmlparse.h"
+#include "FileOperations.h"
 
 using namespace std;
 
@@ -23,12 +23,16 @@ using namespace std;
 //
 int main(int argc, char **argv)
 {
-	if(argc < 2){
-		cout << "Specify input file!" << endl;
-		cout << "Usage: " << argv[0] << " <input-file.html>" << endl;
+	if(argc < 3){
+		cout << "Specify input and output file!" << endl;
+		cout << "Usage: " << argv[0] << " <input-file.html> <output-file>" << endl;
 		exit(-1);
-	} // if(argc < 2)
+	} // if(argc < 3)
   
+	FileOperations fo(argv[1], argv[2]);
+
+	fo.readFile();
+
     return 0; 
 }
 

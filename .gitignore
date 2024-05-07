@@ -3,3 +3,6 @@ htmlparser
 *.o
 *.txt
 .settings/*.*
+.cproject
+.project
+
