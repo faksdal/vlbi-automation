@@ -1,0 +1,5 @@
+htmlparser
+./obj/*.o
+*.o
+*.txt
+.settings/*.*
