@@ -26,6 +26,7 @@ private:
 
 
 	string	readHmtlTag(string _tag);
+	string	skipInitialWhitespace(string _stringToSkip);
 
 protected:
 
