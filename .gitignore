@@ -1,6 +1,6 @@
 2024_edit
 2024
-./bin/*
+./bin/vlbi-automation
 ./obj/*.o
 *.o
 *.txt
