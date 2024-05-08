@@ -22,9 +22,9 @@ using namespace std;
 class fileoperations {
 
 private:
-	unsigned long	inputFileSize = 0L;
-	unsigned long	currentInputFilePos = 0L;
-	unsigned long	currentOutputFilePos = 0L;
+	unsigned long	inputFileSize			= 0L;
+	unsigned long	currentInputFilePos		= 0L;
+	unsigned long	currentOutputFilePos	= 0L;
 
 	string		inputFileName, outputFileName;
 
@@ -46,9 +46,9 @@ public:
 	fileoperations(string _inputFileName, string _outputFileName);
 	virtual ~fileoperations();
 
-	unsigned long	getInputFileSize(void)			{ return inputFileSize;			}
-	unsigned long	getCurrentInputFilePos(void)	{ return currentInputFilePos;	}
-	unsigned long	getCurrentOutputFilePos(void)	{ return currentOutputFilePos;	}
+	inline unsigned long	getInputFileSize(void)			{ return inputFileSize;			}
+	inline unsigned long	getCurrentInputFilePos(void)	{ return currentInputFilePos;	}
+	inline unsigned long	getCurrentOutputFilePos(void)	{ return currentOutputFilePos;	}
 
 	string getOutputFileName(bool _printToScreen);
 	string getInputFileName(bool _printToScreen);
