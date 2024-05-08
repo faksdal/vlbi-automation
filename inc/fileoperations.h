@@ -12,6 +12,9 @@
 #include <fstream>
 #include <iostream>
 
+#include <sys/stat.h>
+#include <unistd.h>
+
 using namespace std;
 
 
@@ -33,18 +36,22 @@ private:
 	string	skipInitialWhitespace(string _stringToSkip);
 	void	updateFilepointerPositions(void);
 
+	inline bool exists(const std::string& name) {	struct stat buffer;
+													return (stat (name.c_str(), &buffer) == 0);
+												}
+
 protected:
 
 public:
-	fileoperations(char* _inputFileName, char* _outputFileName);
+	fileoperations(string _inputFileName, string _outputFileName);
 	virtual ~fileoperations();
 
 	unsigned long	getInputFileSize(void)			{ return inputFileSize;			}
 	unsigned long	getCurrentInputFilePos(void)	{ return currentInputFilePos;	}
 	unsigned long	getCurrentOutputFilePos(void)	{ return currentOutputFilePos;	}
 
-	string printOutputFileName(bool _printToScreen);
-	string printInputFileName(bool _printToScreen);
+	string getOutputFileName(bool _printToScreen);
+	string getInputFileName(bool _printToScreen);
 
 	void			readFile(void);
 	unsigned long	find(unsigned long _startPosition, string _searchString);

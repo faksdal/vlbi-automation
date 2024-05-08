@@ -20,9 +20,8 @@
 using namespace std;
 
 
-//
+
 // Driver code
-//
 int main(int argc, char **argv)
 {
 	//string			searchString;
@@ -32,14 +31,7 @@ int main(int argc, char **argv)
 
 
 	inputFilenameSet =  outputFilenameSet = searchStringSet = false;
-	/*
-	if(argc < 3){
-		cout << "Specify input and output file!" << endl;
-		cout << "Usage: " << argv[0] << " <input-file.html> <output-file>" << endl;
-		exit(-1);
-	} // if(argc < 3)
-	*/
-  
+
 
 
 	//	getopt variables
@@ -84,7 +76,7 @@ int main(int argc, char **argv)
 							break;
 						}
 			case 'h':	{
-							cout << "Give some useful help to the user!" << endl;
+							cout << "Provide some useful help to the user!" << endl;
 							exit(1);
 						}
 			default:	{
@@ -102,7 +94,13 @@ int main(int argc, char **argv)
 
 	//	create an object of type fileoperations, calling the constructor
 	//	of the class
-	//fileoperations fo(argv[1], argv[2]);
+	if(inputFilenameSet && outputFilenameSet){
+		cout << "Creating class object..." << endl;
+		fileoperations fo(inputFilename.c_str(), outputFilename.c_str());
+	}
+	else{
+		cout << "Missing parameters..." << endl;
+	}
 
 
 	/*

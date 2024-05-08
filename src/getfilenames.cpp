@@ -13,7 +13,7 @@
 
 
 
-string fileoperations::printOutputFileName(bool _printToScreen)
+string fileoperations::getOutputFileName(bool _printToScreen)
 {
 	if(_printToScreen)
 		cout << "Outputfilename: " << outputFileName << endl;
@@ -23,7 +23,7 @@ string fileoperations::printOutputFileName(bool _printToScreen)
 
 
 
-string fileoperations::printInputFileName(bool _printToScreen)
+string fileoperations::getInputFileName(bool _printToScreen)
 {
 	if(_printToScreen)
 		cout << " Inputfilename: " << inputFileName << endl;
