@@ -23,14 +23,15 @@ OBJDIR = obj
 
 INCDIR = inc
 SRCDIR = src
+BINDIR = bin
 
 SOURCES = $(wildcard *.cpp $(SRCDIR)/*.cpp)
 OBJFILES = $(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(SOURCES)))
 
 
 
-$(TARGET): $(OBJFILES)
-	$(CXX) $(CPPFLAGS) -o $(TARGET) $(OBJFILES)
+$(BINDIR)/$(TARGET): $(OBJFILES)
+	$(CXX) $(CPPFLAGS) -o $(BINDIR)/$(TARGET) $(OBJFILES)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp	
 	$(CXX) $(CPPFLAGS) -c -o $@ $^
@@ -41,5 +42,5 @@ $(OBJDIR)/$(TARGET).o: $(TARGET).cpp
 
 clean:
 	rm  $(OBJDIR)/*
-	rm $(TARGET)
+	rm $(BINDIR)/$(TARGET)
 
