@@ -43,7 +43,8 @@ public:
 	unsigned long	getCurrentInputFilePos(void)	{ return currentInputFilePos;	}
 	unsigned long	getCurrentOutputFilePos(void)	{ return currentOutputFilePos;	}
 
-
+	string printOutputFileName(bool _printToScreen);
+	string printInputFileName(bool _printToScreen);
 
 	void			readFile(void);
 	unsigned long	find(unsigned long _startPosition, string _searchString);

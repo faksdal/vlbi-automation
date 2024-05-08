@@ -1,5 +1,5 @@
 
-vlbi-automation
+./vlbi-automation
 ./obj/*.o
 *.o
 *.txt

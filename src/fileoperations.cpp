@@ -18,47 +18,35 @@
 //
 fileoperations::fileoperations(char* _inputFileName, char* _outputFileName)
 {
-	//cout << "Constructor called" << endl;
 
+	// assign filenames to object variables
 	inputFileName	= _inputFileName;
 	outputFileName	= _outputFileName;
 
-	//cout << "Opening inputfile " << inputFileName << endl;
+	// open input file, position the fp at the end
 	inputFile.open(inputFileName, ios::ate);
+	//	if file is not open, flag an error and exit
 	if(!inputFile.is_open()){
-		// error opening file
 		cout << "Error opening input file: " << inputFileName << ". Exiting..." << endl;
 		exit(-1);
-	}
+	} // if
 	else{
-		//cout << "Inputfile: " << inputFileName << " opened ok" << endl;
+		// get filesize and put it in object variable
 		inputFileSize = inputFile.tellg();
-
-		//
-		// After getting the filesize, set file pointer at beginning of file.
-		//
-		//cout << "Input file pointer currently at " << inputFile.tellg() << endl;
+		// After getting the filesize, set file pointer at beginning of file
 		inputFile.seekg(0, ios::beg);
-		//cout << "Input file pointer reset at " << inputFile.tellg() << endl;
-	}
+	} // else
 
-	//cout << " Opening outputfile: " << outputFileName << endl;
+	// open the output file
 	outputFile.open(outputFileName);
+	//	if file is not open, flag an error and exit
 	if(!outputFile.is_open()){
-		// error opening file
 		cout << "Error opening output file: " << outputFileName << ". Exiting..." << endl;
 		exit(-1);
-	}
-	else{
-		//cout << "Outputfile: " << outputFileName << " opened ok" << endl;
-	}
+	} // if
 
-	//
 	//	update current file pointer positions
-	//
 	updateFilepointerPositions();
-
-	//cout << "Exit constructor" << endl;
 }
 
 
@@ -68,11 +56,8 @@ fileoperations::fileoperations(char* _inputFileName, char* _outputFileName)
 //
 fileoperations::~fileoperations()
 {
-	cout << "Destructor called" << endl;
-	//
 	// Close files upon exiting
-	//
 	inputFile.close();
 	outputFile.close();
-	cout << "Exit destructor" << endl;
+
 }

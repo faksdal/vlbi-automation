@@ -23,8 +23,8 @@ using namespace std;
 //
 int main(int argc, char **argv)
 {
-	string			searchString;
-	unsigned long	filePointer = 0L;
+	//string			searchString;
+	//unsigned long	filePointer = 0L;
 
 	if(argc < 3){
 		cout << "Specify input and output file!" << endl;
@@ -37,22 +37,24 @@ int main(int argc, char **argv)
 	//	of the class
 	//
 	fileoperations fo(argv[1], argv[2]);
+	fo.printInputFileName(true);
+	fo.printOutputFileName(true);
 
 
+	/*
 	if(argc == 4)
 		searchString = argv[3];
 	else
 		searchString = "<title>";
+	*/
 
-	//cout << "File pointer before fo.find(): " << filePointer << endl;
-	//cout << " Current file pointer input from class object: " << fo.getCurrentInputFilePos() << endl;
-	//cout << "Current file pointer output from class object: " << fo.getCurrentOutputFilePos() << endl;
-
+	/*
 	cout << "main(): File pointer before fo.find(): " << filePointer << endl;
 	filePointer = fo.find(0, searchString);
 	cout << "main(): File pointer after fo.find(): " << filePointer << endl;
 
 	cout << endl << "main(): Read from file at position " << filePointer << ": " << fo.fread(filePointer, 16) << endl;
+	*/
 
     return 0; 
 }
