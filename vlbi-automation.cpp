@@ -32,16 +32,27 @@ int main(int argc, char **argv)
 		exit(-1);
 	} // if(argc < 3)
   
+	//
+	//	create an object of type fileoperations, calling the constructor
+	//	of the class
+	//
 	fileoperations fo(argv[1], argv[2]);
+
 
 	if(argc == 4)
 		searchString = argv[3];
 	else
 		searchString = "<title>";
 
-	filePointer = fo.find(0, searchString);
+	//cout << "File pointer before fo.find(): " << filePointer << endl;
+	//cout << " Current file pointer input from class object: " << fo.getCurrentInputFilePos() << endl;
+	//cout << "Current file pointer output from class object: " << fo.getCurrentOutputFilePos() << endl;
 
-	cout << "File pointer from fo.find(): " << filePointer << endl;
+	cout << "main(): File pointer before fo.find(): " << filePointer << endl;
+	filePointer = fo.find(0, searchString);
+	cout << "main(): File pointer after fo.find(): " << filePointer << endl;
+
+	cout << endl << "main(): Read from file at position " << filePointer << ": " << fo.fread(filePointer, 16) << endl;
 
     return 0; 
 }

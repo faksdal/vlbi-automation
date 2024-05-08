@@ -20,6 +20,10 @@ class fileoperations {
 
 private:
 	unsigned long	inputFileSize = 0L;
+	unsigned long	currentInputFilePos = 0L;
+	unsigned long	currentOutputFilePos = 0L;
+
+	string		inputFileName, outputFileName;
 
 	ifstream	inputFile;
 	ofstream	outputFile;
@@ -27,6 +31,7 @@ private:
 
 	string	readHmtlTag(string _tag);
 	string	skipInitialWhitespace(string _stringToSkip);
+	void	updateFilepointerPositions(void);
 
 protected:
 
@@ -34,9 +39,15 @@ public:
 	fileoperations(char* _inputFileName, char* _outputFileName);
 	virtual ~fileoperations();
 
+	unsigned long	getInputFileSize(void)			{ return inputFileSize;			}
+	unsigned long	getCurrentInputFilePos(void)	{ return currentInputFilePos;	}
+	unsigned long	getCurrentOutputFilePos(void)	{ return currentOutputFilePos;	}
+
+
 
 	void			readFile(void);
 	unsigned long	find(unsigned long _startPosition, string _searchString);
+	string			fread(unsigned long _startPosition, unsigned long _nbytes);
 
 };
 

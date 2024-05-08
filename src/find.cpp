@@ -18,7 +18,9 @@
 
 
 //
-//	find() searches for _searchString, returning the position in the file where the string starts
+//	find() searches for _searchString, starting at _startPosition, returning
+//	the position in the file where the string starts.
+//	find() also updates the file pointer positions
 //
 unsigned long fileoperations::find(unsigned long _startPosition, string _searchString)
 {
@@ -33,12 +35,31 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 		exit(-1);
 	}
 
+	if(inputFile.is_open())
+		cout << "find(): File is open" << endl;
+
+	inputFile.seekg(_startPosition, ios::beg);
+	filePosition = inputFile.tellg();
+	cout << "find(): filePosition: " << filePosition << endl;
 
 	//
 	//	As long as we have input from the file, we keep reading
 	//
 	while(getline(inputFile, inputString)){
-		filePosition = inputFile.tellg();
+		inputFile.eof() ? cout << "eof flag set" << endl : cout << "eof flag not set" << endl;
+		if(inputFile.eof())
+			break;
+
+		if((filePosition = inputFile.tellg()) >= inputFileSize){
+			//	we've reached end-of-file and should act accordingly
+			cout << "End-of-file reached. FP reset to beginning of file!" << endl;
+			cout << "Current file pointer position: " << filePosition << ", compared to filesize: " << inputFileSize << endl;
+			inputFile.seekg(0, ios::beg);
+			filePosition = inputFile.tellg();
+			break;
+		}
+		//cout << "find(): filePosition: " << filePosition << endl;
+
 
 		//
 		//	Delete any initial whitespace in the string
@@ -51,15 +72,19 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 		//	substring in the read line
 		//
 		if((stringPosition = inputString.find(_searchString)) != string::npos){
-			//cout << "    Current filepointer position: " << (filePosition) << endl;
-			//cout << "             Line read from file: " << inputString << endl;
-			//cout << "       Length of the string read: " << inputString.length() << endl;
-			//cout << "Position of searchstring in line: " << (stringPosition) << endl;
-
 			//
 			//	Calculate file position for the start of the _searchString...
 			//
+			cout << "find(): filePosition: " << filePosition << endl;
+			/*
 			position = filePosition - inputString.length() - 1;
+			cout << "            position: " << position << endl;
+			cout << "        filePosition: " << filePosition << endl;
+			cout << "inputString.length(): " << inputString.length() << endl;
+			*/
+			position = filePosition - inputString.length() - 1;
+
+			/*	This section is for debug purposes
 
 			//
 			//	Seek to the current file position, read and print the next
@@ -73,8 +98,13 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 				cout << c;
 			}
 
-			cout << endl;
+			cout << endl << "Line: " << inputString << endl;
+			*/
+			break;
 		}
+		//cout << "find(): Before updateFilepointerPositions()" << endl;
+		updateFilepointerPositions();
+		//cout << "find(): After updateFilepointerPositions()" << endl;
 	}
-	return position;
+	return(position);
 }
