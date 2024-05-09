@@ -41,4 +41,5 @@ $(OBJDIR)/$(TARGET).o: $(TARGET).cpp
 clean:
 	rm  $(OBJDIR)/*
 	rm $(TARGET)
+	rm *.txt
 

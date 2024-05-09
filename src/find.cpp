@@ -45,8 +45,10 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 		// Reset file pointer and break out of while-loop if we've read past eof
 		if((filePosition = inputFile.tellg()) >= inputFileSize){
 			//	we've reached end-of-file and should act accordingly
-			//cout << "End-of-file reached. FP reset to beginning of file!" << endl;
-			//cout << "Current file pointer position: " << filePosition << ", compared to filesize: " << inputFileSize << endl;
+			//eof = true;
+			//	Update current file pointers
+			updateFilepointerPositions();
+
 			inputFile.seekg(0, ios::beg);
 			filePosition = inputFile.tellg();
 			break;
@@ -66,7 +68,7 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 			break;
 		}
 		//	Update current file pointers
-		updateFilepointerPositions();
+		//updateFilepointerPositions();
 
 	}
 	//	Return current input file pointer position

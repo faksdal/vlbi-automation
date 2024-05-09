@@ -92,32 +92,36 @@ int main(int argc, char **argv)
 			cout << "Output file name set to: " << outputFilename << endl;
 
 
+	/*
 	//	create an object of type fileoperations, calling the constructor
 	//	of the class
 	if(inputFilenameSet && outputFilenameSet){
 		cout << "Creating class object..." << endl;
 		fileoperations fo(inputFilename.c_str(), outputFilename.c_str());
 	}
+
+	else{
+		cout << "Missing parameters..." << endl;
+	}
+	*/
+
+	//	if we make it here, we know the user has provided us with
+	//	good info to proceed
+	if(inputFilenameSet && outputFilenameSet && searchStringSet){
+		cout << "Number of included search terms: " << searchArrayIndex << endl;
+		cout << "Creating class object..." << endl;
+		fileoperations fo(inputFilename.c_str(), outputFilename.c_str());
+
+		cout << "Input file, output file and search strings are set!" << endl;
+		cout << "We are good to proceed." << endl;
+
+		for(short i = 0; i < searchArrayIndex; i++)
+			cout << "Search term " << searchStringArray[i] << " is found at position " << fo.find(0, searchStringArray[i]) << " in " << fo.getInputFileName(false) << endl;
+	}
 	else{
 		cout << "Missing parameters..." << endl;
 	}
 
-
-	/*
-	if(argc == 4)
-		searchString = argv[3];
-	else
-		searchString = "<title>";
-	*/
-
-	/*
-	cout << "main(): File pointer before fo.find(): " << filePointer << endl;
-	filePointer = fo.find(0, searchString);
-	cout << "main(): File pointer after fo.find(): " << filePointer << endl;
-
-	cout << endl << "main(): Read from file at position " << filePointer << ": " << fo.fread(filePointer, 16) << endl;
-	*/
-
-    return 0; 
+    return(0);
 }
 

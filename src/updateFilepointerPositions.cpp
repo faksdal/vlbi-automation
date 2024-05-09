@@ -21,6 +21,11 @@ void fileoperations::updateFilepointerPositions(void)
 	currentInputFilePos		= inputFile.tellg();
 	currentOutputFilePos	= outputFile.tellp();
 
+	if(currentInputFilePos >= inputFileSize)
+		eof = true;
+	else
+		eof = false;
+
 	//cout << " updateFilepointerPositions(): File pointer input: " << getCurrentInputFilePos() << endl;
 	//cout << "updateFilepointerPositions(): File pointer output: " << getCurrentOutputFilePos() << endl;
 }
