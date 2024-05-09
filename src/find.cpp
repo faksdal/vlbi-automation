@@ -7,7 +7,7 @@
  */
 
 //
-// TODO -
+// TODO - add functionality to sum up all occurences of a search term, with fp to where they are in the file
 //
 
 #include <string>
