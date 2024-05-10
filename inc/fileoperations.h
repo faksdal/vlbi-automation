@@ -22,7 +22,6 @@ using namespace std;
 class fileoperations {
 
 private:
-	bool			eof;
 	unsigned long	inputFileSize			= 0L;
 	unsigned long	currentInputFilePos		= 0L;
 	unsigned long	currentOutputFilePos	= 0L;
@@ -44,6 +43,8 @@ private:
 protected:
 
 public:
+	bool			eof;
+
 	fileoperations(string _inputFileName, string _outputFileName);
 	virtual ~fileoperations();
 

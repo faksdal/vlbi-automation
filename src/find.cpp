@@ -49,8 +49,10 @@ unsigned long fileoperations::find(unsigned long _startPosition, string _searchS
 			//	Update current file pointers
 			updateFilepointerPositions();
 
+			//	Reset file pointer to beginning of file
 			inputFile.seekg(0, ios::beg);
 			filePosition = inputFile.tellg();
+			//updateFilepointerPositions();
 			break;
 		}
 

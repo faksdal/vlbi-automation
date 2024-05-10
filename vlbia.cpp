@@ -112,11 +112,21 @@ int main(int argc, char **argv)
 		cout << "Creating class object..." << endl;
 		fileoperations fo(inputFilename.c_str(), outputFilename.c_str());
 
-		cout << "Input file, output file and search strings are set!" << endl;
-		cout << "We are good to proceed." << endl;
+		//cout << "Input file, output file and search strings are set!" << endl;
+		//cout << "We are good to proceed." << endl;
 
-		for(short i = 0; i < searchArrayIndex; i++)
-			cout << "Search term " << searchStringArray[i] << " is found at position " << fo.find(0, searchStringArray[i]) << " in " << fo.getInputFileName(false) << endl;
+		unsigned long	searchPoint = 0L;
+
+		for(short i = 0; i < searchArrayIndex; i++){
+			while(!fo.eof){
+				cout << "searchPoint: " << searchPoint << endl;
+				cout	<< "Search term " << searchStringArray[i] << " is found at position "
+						<< (searchPoint = fo.find(searchPoint, searchStringArray[i])) << " in " << fo.getInputFileName(false) << endl;
+				cout << "searchPoint: " << searchPoint << endl;
+				searchPoint += searchStringArray[i].length();
+				cout << "searchPoint: " << searchPoint << endl;
+			}
+		}
 	}
 	else{
 		cout << "Missing parameters..." << endl;
